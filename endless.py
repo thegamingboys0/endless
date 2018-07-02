@@ -352,7 +352,7 @@ async def endless(ctx, member:discord.User = None):#Adds a member to the faction
         #Must be leader, manager or co leader
         if member is None:#No member given 
             await bot.say("You have to specify a player to add to the faction.")
-        elif "459344067369631774" in [role.id for role in ctx.message.author.roles]:#Member already has endless role
+        elif "459344067369631774" in [role.id for role in member.roles]:#Member already has endless role
             await bot.say("That user is already part of Endless.")
         else:#Person does not have the endless role
             await bot.add_roles(member, discord.utils.get(ctx.message.server.roles, name = "[Endless]"))#Adds the endless role
