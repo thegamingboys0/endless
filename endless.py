@@ -293,7 +293,7 @@ async def promote(ctx, member:discord.User = None):#Promotes a member
             await bot.send_message(member, "Congratulations on being promoted to Manager! :clap:")#Congratulations message
             await bot.remove_roles(member, discord.utils.get(ctx.message.server.roles, name = "[Co-Leader]"))#Removes the co leader role
         elif "459287454172839936" in [role.id for role in member.roles]:#Promotion to leader
-            await bot.say("Message Jamie if you want to promote someone to Leader")#Cant promote someone to leader
+            await bot.say("Message Jamie if you want to promote someone to Leader.")#Cant promote someone to leader
         
         else:#Cannot promote that person
             await bot.say("You cannot promote that person.")
@@ -306,12 +306,7 @@ async def demote(ctx, member:discord.User = None):#Demotes a member
         if member is None:#No member is given
             await bot.say("You need to specify a player to demote.")
         elif "459287454172839936" in [role.id for role in member.roles]:#Demotion from manager
-            await bot.add_roles(member, discord.utils.get(ctx.message.server.roles, name = "[Co-Leader]"))#Adds the co leader role
-            channel = member.server.get_channel("460176240238788618")
-            msg = "{0.mention} has been demoted to Co-Leader! :thumbsdown:"
-            await bot.send_message(channel, msg.format(member))
-            await bot.send_message(member, "Unfortunately you have been demoted to Co-Leader! :thumbsdown:")#Demotion message
-            await bot.remove_roles(member, discord.utils.get(ctx.message.server.roles, name = "[Manager]"))#Removes the manager role
+            await bot.say("Message Jamie if you want to demote someone from Manager.")
         elif "459287110810075156" in [role.id for role in member.roles]:#Demotion from co leader
             await bot.add_roles(member, discord.utils.get(ctx.message.server.roles, name = "[Moderator +]"))#Adds the mod + role
             channel = member.server.get_channel("460176240238788618")
@@ -387,6 +382,7 @@ async def addtag(ctx = None):#Add the faction tag to name
     if "459344067369631774" in [role.id for role in ctx.message.author.roles]:#Must have endless role
         nick = (ctx.message.author.name+"ᴱⁿᵈˡᵉˢˢ")
         await bot.change_nickname(ctx.message.author, nick)
+        await bot.say("Tag has been added.")
     else:
         await bot.say("You do not have permission to use this command.")
 
