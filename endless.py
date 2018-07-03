@@ -230,7 +230,7 @@ async def ban(ctx, member: discord.User = None, *, reason:str = None):#Bans a us
 
 @bot.command(pass_context=True)
 async def warn(ctx, member:discord.User = None, *, reason:str = None):#Warns a user
-    if "459287625187065856" in [role.id for role in ctx.message.author.roles]:#Must be leader
+    if "459287625187065856" in [role.id for role in ctx.message.author.roles] or "459287454172839936" in [role.id for role in ctx.message.author.roles]:#Must be leader
         if member is None:#No member given
             await bot.say("You need to specify a user to warn.")
         elif reason is None:#No reason given
@@ -253,7 +253,7 @@ async def warn(ctx, member:discord.User = None, *, reason:str = None):#Warns a u
 
 @bot.command(pass_context=True)
 async def promote(ctx, member:discord.User = None):#Promotes a member
-    if "459287625187065856" in [role.id for role in ctx.message.author.roles]:
+    if "459287625187065856" in [role.id for role in ctx.message.author.roles] or "459287454172839936" in [role.id for role in ctx.message.author.roles]:
         if member is None:#No member given
             await bot.say("You need to specify a player to promote.")
         elif "459284483066298370" in [role.id for role in member.roles]:#Promotion to member
@@ -302,7 +302,7 @@ async def promote(ctx, member:discord.User = None):#Promotes a member
 
 @bot.command(pass_context=True)
 async def demote(ctx, member:discord.User = None):#Demotes a member
-    if "459287625187065856" in [role.id for role in ctx.message.author.roles]:
+    if "459287625187065856" in [role.id for role in ctx.message.author.roles] or "459287454172839936" in [role.id for role in ctx.message.author.roles]:
         if member is None:#No member is given
             await bot.say("You need to specify a player to demote.")
         elif "459287454172839936" in [role.id for role in member.roles]:#Demotion from manager
