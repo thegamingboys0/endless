@@ -416,6 +416,8 @@ async def friend(ctx, member:discord.User = None):#Adds or removes the friend ro
     if "459287625187065856" in [role.id for role in ctx.message.author.roles] or "459287454172839936" in [role.id for role in ctx.message.author.roles] or "459287110810075156" in [role.id for role in ctx.message.author.roles]:
         if member is None:#No member given
             await bot.say("You have to specify a player to add/remove as a friend")
+        elif "459344067369631774" in [role.id for role in member.roles]:#Member is part of endless
+                await bot.say("That person cannot be added as a friend because they are already in Endless.")
         elif "459820843355340810" in [role.id for role in member.roles]:#Member has friend role already
             await bot.remove_roles(member, discord.utils.get(ctx.message.server.roles, name = "[Friend]"))#Removes friend role
             await bot.say("That person is no longer a friend.")
