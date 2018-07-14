@@ -31,7 +31,7 @@ async def wallchecking():
                 count = (count+1)#Increases once per minute//resets if .check is done
                 if count >= wallsTime:#If count is equal to or greater than the time for wall checking
                     await bot.send_message(channel, message)
-                    await asyncio.sleep(60)#Message will then be sent after that every 2 minutes
+                    await asyncio.sleep(120)#Message will then be sent after that every 2 minutes
 
 @bot.command(pass_context=True)
 async def check(ctx):
