@@ -37,12 +37,10 @@ async def wallchecking():
 async def check(ctx):
     global count#Calls the global variable
     if "417725000494088232" in [role.id for role in ctx.message.author.roles]:#Must have endless role
-        if wallsOn == True:#Checks wall checking is turned on
-            channel = discord.Object(id="467772328479031327")
-            member = (ctx.message.author.name)
+        if wallsOn == True:#Checks wall checking is turned on            
             count = 0#Count is reset to 0
             await bot.say(ctx.message.author.mention+" has checked walls!")#Confirmation message
-                await bot.send_message(channel, message)
+            await bot.send_message(discord.Object(id="467772328479031327"), ctx.message.author.name)
         else:#If wall checking is turned off
             await bot.say("Wall checking is not currently turned on.")
     else:#Lack of permission
@@ -86,20 +84,7 @@ async def weewoo(ctx, side:str = None):
             await bot.say(".weewoo (side)")           
     else:
         await bot.say("You do not have permission to use this command.")
-    
-                    
-
-@bot.event
-async def on_member_join(member):#When a member joins
-    channel = member.server.get_channel("459806304769146890")#Gets the welcome-goodbye channel ID
-    msg = "Welcome to the Official Endless Discord server, {0.mention} :thumbsup:" #Message that is put in the channel
-    await bot.send_message(channel, msg.format(member)) #Formatted to add the user that has joined
-
-@bot.event
-async def on_member_remove(member):#When a member leaves
-    channel = member.server.get_channel("459806304769146890")#Gets the welcome-goodbye channel ID
-    msg = "Goodbye {0.mention}, thanks for coming :thumbsdown:"#Message that is put in the channel
-    await bot.send_message(channel, msg.format(member))#Formatted to add the user that left
+  
 
 @bot.command(pass_context=True)
 async def setwalltime(ctx, time:int = None):#Sets the time to check walls
