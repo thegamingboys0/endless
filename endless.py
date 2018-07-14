@@ -38,8 +38,11 @@ async def check(ctx):
     global count#Calls the global variable
     if "417725000494088232" in [role.id for role in ctx.message.author.roles]:#Must have endless role
         if wallsOn == True:#Checks wall checking is turned on
+            channel = discord.Object(id="467772328479031327")
+            member = ctx.message.author.name
             count = 0#Count is reset to 0
             await bot.say(ctx.message.author.mention+" has checked walls!")#Confirmation message
+                await bot.send_message(channel, message)
         else:#If wall checking is turned off
             await bot.say("Wall checking is not currently turned on.")
     else:#Lack of permission
