@@ -24,7 +24,7 @@ async def wallchecking():
     channel = discord.Object(id="464193413059969034")#Gets the walls channel id
     message = "<@&417725000494088232> check walls!"#Mentions the 'Endless' role
     while wallsOn == False:#While walls are off
-        await asyncio.sleep(1)#Checks every second
+        await asyncio.sleep(3)#Checks every second
         if wallsOn == True:#Checks whether walls are on or not
             while wallsOn == True:#If they are on
                 await asyncio.sleep(60)#Will be 60
